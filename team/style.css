@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #333;
+  }
+
+  .active{
+    border-bottom: 1px solid orange;
+  }
+  
+  .logo .first {
+    color: #f2f2f2;
+    font-size: 1.5em;
+  }
+  
+  .logo .last {
+    color: orange;
+    font-size: 1.8em;
+  }
+  
+  .menus {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .menus a {
+    color: #f2f2f2;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .menus a:hover {
+    color: #ddd;
+  }
+  
+  .burger-menu {
+    display: none;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .menus {
+      display: none;
+    }
+  
+    .burger-menu {
+      display: block;
+      cursor: pointer;
+      color: #fff;
+    }
+  
+    .burger-menu-items {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+      right: 0;
+      margin-top: 2rem;
+    }
+  
+    .burger-menu-items a {
+      display: block;
+      color: #f2f2f2;
+      text-decoration: none;
+      padding: 14px 16px;
+    }
+  
+    .burger-menu-items a:hover {
+      background-color: #ddd;
+      color: #333;
+    }
+  
+    .burger-menu.open .burger-menu-items {
+      display: block;
+      animation: nav-animation  0.7s ease-in;
+    }
+    
+
+  }
+
+
+  /* Main Img */
+    .main-img{
+    background: url(../images/page\ under\ construction.jpg) no-repeat center;
+    width: 100vw;
+    height: 90vh;
+    background-size: contain;
+  }
+
+/* footer */
+footer{
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .footer{
+    display:flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 2em;
+    /* gap: 40%; */
+    max-width: 100vw;
+    justify-content: space-between;
+  }
+  .copyright{
+    color: white;
+    align-self: center;
+    background-color: #333;
+    text-align: center;
+  }
+
+  .contacts{
+    display: flex;
+    gap:1em;
+    flex-direction: column;
+  }
+
+  .icon{
+    text-decoration: none;
+    color: white
+
+  }
+
+  @media (min-width: 900px){
+       /* Footer */
+      .footer{
+          flex-direction: row;
+          justify-content: space-between;
+  }
+      .contacts{
+          flex-direction: row;
+      }
+      .icon{
+          font-size: 1.5rem;
+      }
+  }
+
+@keyframes nav-animation{
+  0% {
+      opacity: 0;
+      
+  }
+
+  /* 50% {
+      opacity: 0.5;
+  } */
+  100%{
+      opacity: 1;
+  }
+}

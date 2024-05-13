@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #333;
+  }
+
+  .active{
+    border-bottom: 1px solid orange;
+  }
+  
+  .logo .first {
+    color: #f2f2f2;
+    font-size: 1.5em;
+  }
+  
+  .logo .last {
+    color: orange;
+    font-size: 1.8em;
+  }
+  
+  .menus {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .menus a {
+    color: #f2f2f2;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .menus a:hover {
+    color: #ddd;
+  }
+  
+  .burger-menu {
+    display: none;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .menus {
+      display: none;
+    }
+  
+    .burger-menu {
+      display: block;
+      cursor: pointer;
+      color: #fff;
+    }
+  
+    .burger-menu-items {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      width: 100%;
+      list-style-type: none;
+      padding: 0;
+      right: 0;
+      margin-top: 2rem;
+    }
+  
+    .burger-menu-items a {
+      display: block;
+      color: #f2f2f2;
+      text-decoration: none;
+      padding: 14px 16px;
+    }
+  
+    .burger-menu-items a:hover {
+      background-color: #ddd;
+      color: #333;
+    }
+  
+    .burger-menu.open .burger-menu-items {
+      display: block;
+      animation: nav-animation  0.7s ease-in;
+    }
+    
+
+  }
+
+  /* Landing section */
+  .landing{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/Powerpoint\ 1.jpg") no-repeat center fixed;
+    height: 100vh;
+    max-width: 100vw;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    overflow-x: hidden;
+  }
+  
+  .centered-text {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+.centered-text .glyco {
+    color: white;
+    font-size: 2.5em; 
+  }
+  
+.centered-text .safe {
+    color: orange; 
+    font-size: 3em; 
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  
+  .fadeInUp-animation {
+    animation: 2s fadeInUp;
+  }
+
+/* about us section*/
+
+.about-us{
+    /* height: 60vh; */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), rgba(0, 0, 0, 0.816);
+  }
+
+.why-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    padding: 20px;
+    justify-content: center;
+}
+
+.why-text h2{
+    color: orange;
+    font-size: 3rem;
+    margin-bottom: .5em;
+    margin-top: 1.5em;
+    text-align: center;
+}
+.why-text p{
+    width: 50%;
+    margin: auto;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+ 
+.read{
+  padding: 1em 1.2em;
+  background-color: orange;
+  outline: none;
+  border: none;
+  border-radius: 110rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+.read:hover{
+  background: transparent;
+  outline: 1px solid orange;
+  color: white;
+  transition: all .25s ease-in;
+}
+
+/* competitve edge section */
+
+  .competitive-edge{
+    background-image: url("../images/Powerpoint\ 2.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+   
+
+  }
+  .competitive-edge h1{
+    margin-left: 5%;
+    margin-top: 3em;
+    color: white;
+  }
+
+
+/* cards section */
+  .section-cards{
+    border-top: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 1rem;
+    width: 90%;
+    margin:2em 5%;    /* gap: 1em; */
+  }
+
+  .light {
+    background-color: rgba(161, 149, 116, 0.5);
+
+  }
+
+  .heavy{
+    background-color: rgba(193, 117, 41, 0.5);
+  }
+
+  .mid{
+    background-color: rgba(195, 152, 109, 0.5);
+  }
+
+  .card{
+    
+    max-width: 30%;
+    padding: 2em;
+
+    transition: all .5s ease-in-out;
+  }
+  .card:hover{
+    cursor:pointer;
+    transform: scale(1.12, 1.12);
+  }
+  .card-title{
+    color: rgb(251, 238, 201);
+    margin-bottom: 1em;
+    font-size: 1.5rem;
+  }
+  .card-body{
+    color: white;
+    font-size: 1.2rem;
+  }
+
+
+  /* footer */
+  footer{
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer{
+    display:flex;
+    padding: 2em;
+    /* gap: 40%; */
+    max-width: 100vw;
+    justify-content: space-between;
+  }
+  .copyright{
+    color: white;
+    align-self: center;
+    background-color: #333;
+    text-align: center;
+  }
+
+  .contacts{
+    display: flex;
+    gap:1em;
+  }
+
+  .icon{
+    text-decoration: none;
+    color: white
+
+  }
+
+
+  @media (max-width:900px){
+    .section-cards{
+        flex-direction: column;
+        gap: 3em;
+        align-items: center;
+    }
+    .card{
+        max-width: 80%;
+    }
+  }
+
+  @media (max-width:500px){
+      /* landing */
+        .centered-text .glyco{
+          font-size: 2.5rem;
+        }
+        .centered-text .safe{
+          font-size: 3rem;
+        }
+
+        /* about */
+        .why-text h2{
+            font-size: 3rem;
+        }
+        .why-text p{
+          font-size: 1rem;
+          text-align: center;
+        }
+        .read{
+            padding: 0.7em 0.9em;
+            font-size: 1rem;
+        }
+        .section-cards{
+            flex-direction: column;
+            gap: 1em;
+        }
+        .card{
+            max-width: 100%;
+        }
+        .footer{
+            flex-direction: column;
+            gap: 3em;
+        }
+        .contacts{
+            flex-direction: column;
+        }
+  } 
+
+  @keyframes nav-animation{
+    0% {
+        opacity: 0;
+        
+    }
+
+    /* 50% {
+        opacity: 0.5;
+    } */
+    100%{
+        opacity: 1;
+    }
+  }
