@@ -180,7 +180,9 @@
   color: white;
   transition: all .25s ease-in;
 }
-
+.btn-more{
+  text-decoration: none;
+}
 /* competitve edge section */
 
   .competitive-edge{
