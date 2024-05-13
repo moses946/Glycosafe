@@ -319,6 +319,9 @@
         .card{
             max-width: 100%;
         }
+        .card:hover{
+          transform: scale(1.07, 1.07);
+        }
         .footer{
             flex-direction: column;
             gap: 3em;
