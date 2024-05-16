@@ -132,6 +132,27 @@
     animation: 2s fadeInUp;
   }
 
+  .cta-btn{
+    margin-top: 3em;
+    padding: 1.2em 1.4em;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 0.8em;
+    color: orange;
+    background: black;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease-in-out;
+    animation: float 2s ease-in-out 2.05s infinite;
+  }
+
+  @keyframes float {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-1.5em); }
+    60% { transform: translateY(-0.75em); }
+    }
+
 /* about us section*/
 
 .about-us{

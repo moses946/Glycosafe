@@ -151,6 +151,7 @@ section p{
     border-radius: 0.8em;
     color: orange;
     background: black;
+    cursor: pointer;
 }
 
 /* footer */

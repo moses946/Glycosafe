@@ -46,6 +46,73 @@
   .burger-menu {
     display: none;
   }
+
+  .card-container{
+    padding: 0em 2em 2em 2em;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(500px, 100%), 1fr));
+    grid-gap: 2em;
+
+  }
+  .container{
+    background-color: hsl(0, 0%, 12%);
+    /* width: 90%;  */
+    /* min-height: 75vh; */
+    /* margin-top: 50%;
+    margin :auto; 
+    margin-top: 10%; */
+     
+    max-width: 700px;
+    color: white;
+    position: relative;
+    
+    padding:2em;
+}
+.header-image{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+}
+.header-image img{
+    width: 10rem;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 2em;
+}
+.header-image h1{
+    margin-bottom: .2em;
+    font-weight: 600;
+}
+.header-image p{
+    color: hsl(75, 94%, 57%);
+    font-weight: 700;   
+}
+
+.bio{
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.social__links{
+    list-style: none;
+}
+.social_links-item{
+    padding:1em;
+    background-color: hsl(0, 0%, 20%);
+    text-align: center;
+    margin-top: 1em;
+    font-weight: 700;
+    border-radius: .7rem;
+}
+
+.social_links-item:hover{
+    cursor: pointer;
+    opacity: .7;
+}
   
   @media screen and (max-width: 600px) {
     .menus {
@@ -92,10 +159,17 @@
 
   /* Main Img */
     .main-img{
-    background: url(../images/page\ under\ construction.jpg) no-repeat center;
+    background: black;
     width: 100vw;
-    height: 90vh;
+    height: 65vh;
     background-size: contain;
+    font-size: 3em;
+    font-weight: 1000;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 /* footer */
@@ -147,6 +221,12 @@ footer{
       .icon{
           font-size: 1.5rem;
       }
+  }
+
+  @media (max-width: 450px){
+    .card-container{
+      padding: 0;
+    }
   }
 
 @keyframes nav-animation{
