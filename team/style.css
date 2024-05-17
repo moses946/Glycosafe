@@ -175,7 +175,7 @@
   align-items: center;
 }
 .main-img h1{
-  font-size: 3em;
+  font-size: 1em;
   font-weight: bold;
   background: white;
   background-clip: text;
@@ -232,6 +232,9 @@ footer{
       }
       .icon{
           font-size: 1.5rem;
+      }
+      .main-img h1{
+        font-size: 3em;
       }
   }
 
@@ -296,4 +299,4 @@ footer{
 
   }
 
-}}
+}
