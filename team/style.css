@@ -76,7 +76,8 @@
     margin-bottom: 1.5em;
 }
 .header-image img{
-    width: 10rem;
+    width: 16rem;
+    min-height: 16rem;
     max-width: 100%;
     border-radius: 50%;
     object-fit: cover;
@@ -113,7 +114,9 @@
     cursor: pointer;
     opacity: .7;
 }
-  
+
+      /* Apply a linear gradient background */
+
   @media screen and (max-width: 600px) {
     .menus {
       display: none;
@@ -157,20 +160,29 @@
   }
 
 
-  /* Main Img */
-    .main-img{
-    background: black;
-    width: 100vw;
-    height: 65vh;
-    background-size: contain;
-    font-size: 3em;
-    font-weight: 1000;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* Main Img */
+  .main-img{
+  background: black;
+  width: 100vw;
+  height: 65vh;
+  background-size: contain;
+  font-size: 3em;
+  font-weight: 1000;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-img h1{
+  font-size: 3em;
+  font-weight: bold;
+  background: white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: colorChange 3s linear infinite alternate-reverse;
+}
 
 /* footer */
 footer{
@@ -242,3 +254,46 @@ footer{
       opacity: 1;
   }
 }
+
+
+
+@keyframes colorChange {
+  0% {
+      background-color: white;
+      /* background-position: 0% 0%; */
+  }
+  10%{
+    background-color:  linear-gradient(to right, orange 10%, white 90%);
+  }
+  20%{
+    background-color:  linear-gradient(to right, orange 25%, white 75%);
+  }
+  30%{
+    background-color:  linear-gradient(to right, orange 30%, white 70%);
+  }
+  40%{
+    background-color:  linear-gradient(to right, orange 40%, white 60%);
+  }
+  50%{
+    background-color:  linear-gradient(to right, orange 50%, white 50%);
+  }
+  60%{
+    background-color:  linear-gradient(to right, orange 60%, white 40%);
+  }
+  
+  70%{
+    background-color:  linear-gradient(to right, orange 70%, white 30%);
+  }
+  80%{
+    background-color:  linear-gradient(to right, orange 80%, white 20%);
+  }
+  90%{
+    background-color:  linear-gradient(to right, orange 90%, white 10%);
+  }
+  
+  100% {
+    background-color: orange;
+
+  }
+
+}}
