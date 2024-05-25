@@ -6,6 +6,11 @@
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
+
+a{
+  text-decoration: none;
+
+}
   
   .navbar {
     display: flex;
@@ -101,6 +106,11 @@
 .social__links{
     list-style: none;
 }
+
+.social__links a{
+  text-decoration: none;
+  color: white;
+}
 .social_links-item{
     padding:1em;
     background-color: hsl(0, 0%, 20%);
@@ -113,6 +123,10 @@
 .social_links-item:hover{
     cursor: pointer;
     opacity: .7;
+}
+
+.social_links-item a{
+  text-decoration: none;
 }
 
       /* Apply a linear gradient background */
@@ -233,9 +247,16 @@ footer{
       .icon{
           font-size: 1.5rem;
       }
+    
       .main-img h1{
-        font-size: 3em;
+        font-size: 1.6em;
       }
+  }
+
+  @media (min-width:1500px){
+    .main-img h1{
+      font-size: 2.6em;
+    }
   }
 
   @media (max-width: 450px){
