@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: './index.js', // Your entry point, adjust if necessary
   output: {
-    filename: 'bundle',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -42,6 +42,6 @@ function generateHtmlPlugins(pages) {
     return pages.map(page => new HtmlWebpackPlugin({
       filename: `${page}/index.html`,
       template: `./${page}/index.html`,
-      chunks: ['bundle']
+      chunks: ['bundle.js']
     }));
   }
