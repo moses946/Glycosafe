@@ -1,1 +1,0 @@
-(()=>{"use strict";document.querySelector(".burger-menu").addEventListener("click",(function(){this.classList.toggle("open")}));const e=window.location.pathname;document.querySelectorAll(".menu").forEach((t=>{t.href.includes(`${e}`)&&(t.classList.add("active"),console.log(t))}))})();
