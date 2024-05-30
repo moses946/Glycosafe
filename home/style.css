@@ -110,7 +110,11 @@
     position: relative;
     text-align: center;
     color: white;
+    translation: all 0.5s ease-in-out;
   }
+.centered-text h1:hover{
+    transform: scale(1.1, 1.1);
+}
   
 .centered-text .glyco {
     color: white;
@@ -322,6 +326,10 @@
     display: flex;
     gap:1em;
   }
+
+.contacts a:hover {
+    color: grey
+}
 
   .icon{
     text-decoration: none;
