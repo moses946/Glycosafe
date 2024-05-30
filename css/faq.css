@@ -135,9 +135,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 15%;
-    position: fixed;
+    /* position: fixed;
 
-    bottom: 0;
+    bottom: 0; */
 
     }
     .footer{
