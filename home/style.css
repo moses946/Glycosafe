@@ -110,7 +110,11 @@
     position: relative;
     text-align: center;
     color: white;
+    translation: all 0.5s ease-in-out;
   }
+.centered-text h1:hover{
+    transform: scale(1.1, 1.1);
+}
   
 .centered-text .glyco {
     color: white;
@@ -323,14 +327,18 @@
     gap:1em;
   }
 
+.contacts a small:hover {
+    color: grey
+}
+
   .icon{
     text-decoration: none;
     color: white
 
   }
 
-  /* illustrations */
-  
+  /* illustrations*/
+
 /* illustrations sections */
 .illustration{
   /* background-color: #FFF7DC; */

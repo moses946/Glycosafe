@@ -26,4 +26,8 @@ let initSlider = ()=>{
     })
 }
 
-window.addEventListener("DOMContentLoaded", initSlider)
+window.addEventListener("DOMContentLoaded", initSlider);
+
+const handleAppBtn = ()=>{
+    window.alert("The app is currently only available to red teamers for testing...")
+}
