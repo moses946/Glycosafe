@@ -6,7 +6,7 @@ document.querySelector('.burger-menu').addEventListener('click', function() {
   const navLinks = document.querySelectorAll('.menu').forEach(link => {
 
     const linkText = link.textContent.trim().toLowerCase();
-    if ((activePage === '/' && linkText === 'home') || (link.href.endsWith('/') && linkText === 'home')) {
+    if ((activePage === '/' && linkText === 'home')) {
         link.classList.add('active');
         console.log(link);
     }
