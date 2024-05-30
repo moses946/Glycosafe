@@ -327,7 +327,7 @@
     gap:1em;
   }
 
-.contacts a:hover {
+.contacts a small:hover {
     color: grey
 }
 
@@ -337,8 +337,8 @@
 
   }
 
-  /* illustrations */
-  
+  /* illustrations*/
+
 /* illustrations sections */
 .illustration{
   /* background-color: #FFF7DC; */
