@@ -6,13 +6,13 @@ document.querySelector('.burger-menu').addEventListener('click', function() {
   const navLinks = document.querySelectorAll('.menu').forEach(link => {
 
     const linkText = link.textContent.trim().toLowerCase();
-    if ((activePage === '/' && linkText === 'home')) {
+    if (activePage === '/' && linkText === 'home') {
         link.classList.add('active');
         console.log(link);
     }
-    else if(link.href.includes(`${activePage}`)){
-      link.classList.add('active');
-      console.log(link);
+    else if (link.href.endsWith(activePage) && activePage !== '/') {
+        link.classList.add('active');
+        console.log(link);
     }
   })
 
