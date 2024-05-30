@@ -93,6 +93,10 @@ section h2{
     margin-bottom: 1em;
     
 }
+ 
+.wrapper p{
+    text-align: left;
+}
 
 section p{
     color: white;
@@ -231,6 +235,9 @@ footer{
 
 @media (min-width: 600px) {
     /* CTA */
+    .wrapper{
+        text-align: center;
+    }
     .cta{
         flex-direction: row;
         justify-content: space-between;
