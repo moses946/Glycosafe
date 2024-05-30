@@ -54,7 +54,7 @@
     display: none;
     min-height: 25%;
     position: absolute;
-    top: 10%;
+    top: 7%;
     bottom: 75%;
     width: 100vw;
     z-index: -9999;
@@ -75,6 +75,7 @@
     top: 0;
     bottom: 75%;
     width: 100vw;
+    z-index: -9999;
 }
 
 .background-pattern_mobile img{
@@ -134,9 +135,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 15%;
-    /* position: fixed;
+    position: fixed;
 
-    bottom: 0; */
+    bottom: 0;
 
     }
     .footer{
@@ -167,11 +168,7 @@
 
     }
 
-
-
-
-
-body{
+.faq-body{
     /* background: url("assets/images/background-pattern-mobile.svg");
     background-attachment: fixed;
     background-position: center;
@@ -183,49 +180,13 @@ body{
    
 }
 
-/* background-pattern for desktop */
-.background-pattern_desktop{
-    display: none;
-    min-height: 25%;
-    position: absolute;
-    top: 0;
-    bottom: 75%;
-    width: 100vw;
-}
-
-.background-pattern_desktop img{
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -3;
-}
-/* background pattern for mobile */
-.background-pattern_mobile{
-    min-height: 25%;
-    position: absolute;
-    top: 4%;
-    bottom: 75%;
-    width: 100vw;
-    z-index: -9999;
-}
-
-.background-pattern_mobile img{
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -3;
-}
 
 /* common layout designs */
 ul{
     list-style: none;
 }
 
-.container{
+.faq-container{
     width:75%;
 
     
@@ -244,7 +205,7 @@ ul{
 
 /* card styling */
 
-.card-header{
+.faq-card-header{
     display: flex;
     gap: 1em;
     justify-content: flex-start;
@@ -298,7 +259,7 @@ ul{
 }
 
 @media (min-width:1000px){
-    .container{
+    .faq-container{
         width: 700px;
         left: 25%;
     }

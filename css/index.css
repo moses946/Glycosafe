@@ -96,7 +96,7 @@
 
   /* Landing section */
   .landing{
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./assets/Landing.jpg") no-repeat center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/images/Landing.jpg") no-repeat center fixed;
     height: 100vh;
     max-width: 100vw;
     display: flex; 
@@ -110,7 +110,7 @@
     position: relative;
     text-align: center;
     color: white;
-    translation: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 .centered-text h1:hover{
     transform: scale(1.1, 1.1);
@@ -238,7 +238,7 @@
 /* competitve edge section */
 
   .competitive-edge{
-    background-image: url("./assets/Competitive.jpg");
+    background-image: url("../assets/images/Competitive.jpg");
     background-size: cover;
     background-position: center;
     min-height: 70vh;

@@ -52,7 +52,7 @@
 
 /* Landing */
 
-.landing{
+.about-landing{
     display: flex;
     flex-direction: column-reverse;
     padding: 1em;
@@ -144,7 +144,7 @@ section p{
     max-width: 100%;
 }
 
-.cta-btn{
+.about-cta-btn{
     position: absolute;
     padding: 0.7em 0.9em;
     font-size: 1rem;
@@ -214,6 +214,7 @@ footer{
     list-style-type: none;
     padding: 0;
     right: 0;
+    margin-top: 2em;
   }
 
   .burger-menu-items a {
@@ -230,6 +231,7 @@ footer{
 
   .burger-menu.open .burger-menu-items {
     display: block;
+    animation: nav-animation  0.7s ease-in;
   }
 }
 
@@ -266,7 +268,7 @@ footer{
     .feature {
         font-size: 1.2 rem;
     }
-    .cta-btn{
+    .about-cta-btn{
         bottom: 0.2rem;
     }
     .typewriter{
@@ -320,7 +322,7 @@ footer{
 
 @media (min-width: 900px){
     /* Landing */
-    .landing{
+    .about-landing{
         flex-direction: row;
         gap: 3em;
         margin-bottom: 4em;
@@ -423,7 +425,7 @@ footer{
     .feature {
         font-size: 2rem;
     }
-    .cta-btn{
+    .about-cta-btn{
         bottom: -.6rem;
     }
     /* Footer */
@@ -438,3 +440,18 @@ footer{
         font-size: 1.5rem;
     }
 }
+
+
+@keyframes nav-animation{
+    0% {
+        opacity: 0;
+        
+    }
+
+    /* 50% {
+        opacity: 0.5;
+    } */
+    100%{
+        opacity: 1;
+    }
+  }
