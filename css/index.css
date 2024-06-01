@@ -57,8 +57,10 @@
   .active{
     border-bottom: 1px solid orange;
   }
+
   .logo::hover{
       transition: 0.4s ease-in-out;
+      cursor: default;
   }
   .logo .first {
     color: #f2f2f2;
