@@ -1,5 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Poppins&display=swap');
 
+:root{
+
+    --main-color: rgba(255,160,0);
+
+    --bg-color: rgba(255, 160, 0, 0.1);
+
+}
+
+::-webkit-scrollbar{
+
+    width: 15px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background-color: var(--main-color);
+
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    box-shadow: 0 0 15px var(--main-color);
+
+}
+
+::-webkit-scrollbar-track{
+
+    background-color: var(--bg2-color);
+}
 *{
     margin: 0;
     padding: 0;
@@ -26,6 +60,15 @@ a{
   .logo .first {
     color: #f2f2f2;
     font-size: 1.5em;
+  }
+.logo{
+    transition: 0.4s ease-in-out;
+}
+  .logo:hover{
+      cursor: default;
+      -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+      transform: scale(1.2);
   }
   
   .logo .last {
