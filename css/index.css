@@ -33,6 +33,7 @@
 ::-webkit-scrollbar-track{
 
     background-color: var(--bg2-color);
+}
 
 *{
     margin: 0;
