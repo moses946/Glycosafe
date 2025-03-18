@@ -66,7 +66,7 @@ stages:
 
   - job: MobileTests
     steps:
-    - task: FlutterInstall@0
+    - task: Flutter Install
       inputs:
         version: '$(flutterVersion)'
     - script: |
