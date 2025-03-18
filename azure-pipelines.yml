@@ -1,0 +1,179 @@
+# azure-pipelines.yml
+
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - 'user_frontend/**'
+      # - 'backend/**'  # Commented out backend
+      # - 'ml/**'       # Commented out ML
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Mobile App
+  flutterVersion: '3.19.3'
+  androidBuildType: 'apk'
+  iosBuildType: 'ipa'
+  # Backend
+  # pythonVersion: '3.11'
+  # backendDockerImage: 'myapp-backend'
+  # ML
+  # mlModelVersion: '1.0.0'
+  # Azure
+  # azureSubscription: 'your-azure-subscription'
+  # backendAppName: 'myapp-backend'
+  # mlApiAppName: 'myapp-ml-api'
+
+stages:
+- stage: Test
+  jobs:
+  # - job: BackendTests      # Commented out backend tests
+  #   steps:
+  #   - task: UsePythonVersion@0
+  #     inputs:
+  #       versionSpec: '$(pythonVersion)'
+  #       addToPath: true
+  #   - script: |
+  #       cd backend
+  #       pip install -r requirements-dev.txt
+  #       pytest --cov=app --cov-report=xml
+  #     displayName: 'Run Backend Tests'
+  #   - task: PublishCodeCoverageResults@1
+  #     inputs:
+  #       codeCoverageTool: Cobertura
+  #       summaryFileLocation: '$(System.DefaultWorkingDirectory)/backend/coverage.xml'
+
+  # - job: MLTests           # Commented out ML tests
+  #   steps:
+  #   - task: UsePythonVersion@0
+  #     inputs:
+  #       versionSpec: '$(pythonVersion)'
+  #       addToPath: true
+  #   - script: |
+  #       cd ml
+  #       pip install -r requirements-dev.txt
+  #       pytest --cov=models --cov-report=xml
+  #     displayName: 'Run ML Tests'
+  #   - task: PublishCodeCoverageResults@1
+  #     inputs:
+  #       codeCoverageTool: Cobertura
+  #       summaryFileLocation: '$(System.DefaultWorkingDirectory)/ml/coverage.xml'
+
+  - job: MobileTests
+    steps:
+    - task: FlutterInstall@0
+      inputs:
+        version: '$(flutterVersion)'
+    - script: |
+        cd user_frontend
+        flutter pub get
+        flutter doctor
+        # flutter test
+      displayName: 'Run Flutter Tests'
+
+- stage: BuildMobile
+  dependsOn: Test
+  jobs:
+  - job: BuildMobileApp
+    steps:
+    - task: FlutterInstall@0
+      inputs:
+        version: '$(flutterVersion)'
+    
+    - script: |
+        cd user_frontend
+        flutter pub get
+        flutter build apk --release
+      displayName: 'Build Android APK'
+    
+    - script: |
+        cd user_frontend
+        flutter build appbundle --release
+      displayName: 'Build Android App Bundle'
+    
+    - script: |
+        cd user_frontend
+        mkdir -p build/ios/ipa
+        flutter build ios --release --no-codesign
+      displayName: 'Build iOS App'
+      condition: eq(variables['Agent.OS'], 'Darwin')
+    
+    # Publish artifacts for download
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/flutter-apk/app-release.apk'
+        artifactName: 'android-apk'
+        publishLocation: 'Container'
+      displayName: 'Publish Android APK'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/bundle/release/app-release.aab'
+        artifactName: 'android-bundle'
+        publishLocation: 'Container'
+      displayName: 'Publish Android App Bundle'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/ios'
+        artifactName: 'ios-build'
+        publishLocation: 'Container'
+      displayName: 'Publish iOS Build'
+      condition: eq(variables['Agent.OS'], 'Darwin')
+
+    # App Center deployment commented out
+    # - task: AppCenterDistribute@3
+    #   displayName: 'Deploy to App Center (Android)'
+    #   inputs:
+    #     serverEndpoint: 'your-app-center-service-connection'
+    #     appSlug: 'your-org/your-android-app'
+    #     appFile: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/flutter-apk/app-release.apk'
+    #     releaseNotesOption: 'input'
+    #     releaseNotesInput: 'Build $(Build.BuildId) deployed via Azure DevOps CI/CD'
+    #     destinationType: 'groups'
+    #     distributionGroupId: 'your-distribution-group-id'
+
+    # - task: AppCenterDistribute@3
+    #   displayName: 'Deploy to App Center (iOS)'
+    #   condition: eq(variables['Agent.OS'], 'Darwin')
+    #   inputs:
+    #     serverEndpoint: 'your-app-center-service-connection'
+    #     appSlug: 'your-org/your-ios-app'
+    #     appFile: '$(System.DefaultWorkingDirectory)/mobile/build/ios/ipa/your-app.ipa'
+    #     releaseNotesOption: 'input'
+    #     releaseNotesInput: 'Build $(Build.BuildId) deployed via Azure DevOps CI/CD'
+    #     destinationType: 'groups'
+    #     distributionGroupId: 'your-distribution-group-id'
+
+# Backend and ML stages commented out
+# - stage: BuildAndDeployBackend
+#   dependsOn: Test
+#   jobs:
+#   - job: BuildAndDeployBackend
+#     steps:
+#     - task: Docker@2
+#       displayName: 'Build Backend Docker Image'
+#       inputs:
+#         containerRegistry: 'your-acr-service-connection'
+#         repository: '$(backendDockerImage)'
+#         command: 'build'
+#         Dockerfile: 'backend/Dockerfile'
+#         buildContext: 'backend'
+#         tags: |
+#           $(Build.BuildId)
+#           latest
+#     ...
+
+# - stage: Monitoring
+#   dependsOn: BuildAndDeploy
+#   jobs:
+#   - job: SetupMonitoring
+#     steps:
+#     - task: AzureCLI@2
+#       displayName: 'Configure Application Insights'
+#       ...
