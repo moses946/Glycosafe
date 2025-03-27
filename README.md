@@ -22,10 +22,10 @@ GlycoSafe is an AI-powered mobile application that estimates the glycemic load o
 - **Firebase** - For user authentication and real-time database management.
 
 ### Backend:
-- **FastAPI** - A high-performance web framework for processing meal images.
+- **Django** - A high-performance web framework for processing meal images.
 - **Python** - Used for backend logic and AI model implementation.
-- **TensorFlow/Keras** - For training and deploying deep learning models for food recognition.
-- **PostgreSQL** - For storing food data and user logs.
+- **Pytorch/Tensorflow** - For training and deploying deep learning models for food recognition.
+- **NoSQL database** - For storing food data and user logs.
 - **Docker** - For containerizing the backend services.
 
 ### AI & Image Processing:
@@ -35,7 +35,7 @@ GlycoSafe is an AI-powered mobile application that estimates the glycemic load o
 
 ### DevOps & Deployment:
 - **GitHub Actions** - For CI/CD automation.
-- **Google Cloud/AWS** - For cloud hosting and scalable backend deployment.
+- **Google Cloud/AWS/Azure** - For cloud hosting and scalable backend deployment.
 - **GitHub Pages** - For project documentation and web-based details.
 
 ---
