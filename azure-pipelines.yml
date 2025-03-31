@@ -32,6 +32,81 @@ variables:
 stages:
 - stage: Test
   jobs:
+
+    - job: MobileTests
+  steps:
+  - script: |
+      sudo apt-get update -qq
+      sudo apt-get install -y curl git unzip xz-utils
+      git clone https://github.com/flutter/flutter.git -b stable --depth 1
+      echo "##vso[task.setvariable variable=FLUTTER_HOME]$(pwd)/flutter"
+      echo "##vso[task.setvariable variable=PATH]$(FLUTTER_HOME)/bin:$(PATH)"
+      flutter doctor
+    displayName: 'Manually Install Flutter'
+  
+  - script: |
+      cd user_frontend
+      flutter pub get
+      flutter doctor
+      # flutter test
+    displayName: 'Run Flutter Tests'
+
+- stage: BuildMobile
+  dependsOn: Test
+  jobs:
+  - job: BuildMobileApp
+    steps:
+    - script: |
+        sudo apt-get update -qq
+        sudo apt-get install -y curl git unzip xz-utils
+        git clone https://github.com/flutter/flutter.git -b stable --depth 1
+        echo "##vso[task.setvariable variable=FLUTTER_HOME]$(pwd)/flutter"
+        echo "##vso[task.setvariable variable=PATH]$(FLUTTER_HOME)/bin:$(PATH)"
+        flutter doctor
+      displayName: 'Manually Install Flutter'
+    
+    - script: |
+        cd user_frontend
+        flutter pub get
+        flutter build apk --release
+      displayName: 'Build Android APK'
+    
+    - script: |
+        cd user_frontend
+        flutter build appbundle --release
+      displayName: 'Build Android App Bundle'
+    
+    - script: |
+        cd user_frontend
+        mkdir -p build/ios/ipa
+        flutter build ios --release --no-codesign
+      displayName: 'Build iOS App'
+      condition: eq(variables['Agent.OS'], 'Darwin')
+    
+    # Publish artifacts for download
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/user_frontend/build/app/outputs/flutter-apk/app-release.apk'
+        artifactName: 'android-apk'
+        publishLocation: 'Container'
+      displayName: 'Publish Android APK'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/user_frontend/build/app/outputs/bundle/release/app-release.aab'
+        artifactName: 'android-bundle'
+        publishLocation: 'Container'
+      displayName: 'Publish Android App Bundle'
+    
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: '$(System.DefaultWorkingDirectory)/user_frontend/build/ios'
+        artifactName: 'ios-build'
+        publishLocation: 'Container'
+      displayName: 'Publish iOS Build'
+      condition: eq(variables['Agent.OS'], 'Darwin')
+
+
   # - job: BackendTests      # Commented out backend tests
   #   steps:
   #   - task: UsePythonVersion@0
@@ -64,67 +139,67 @@ stages:
   #       codeCoverageTool: Cobertura
   #       summaryFileLocation: '$(System.DefaultWorkingDirectory)/ml/coverage.xml'
 
-  - job: MobileTests
-    steps:
-    - task: FlutterInstall@0
-      inputs:
-        version: '$(flutterVersion)'
-    - script: |
-        cd user_frontend
-        flutter pub get
-        flutter doctor
-        # flutter test
-      displayName: 'Run Flutter Tests'
+#   - job: MobileTests
+#     steps:
+#     - task: FlutterInstall@0
+#       inputs:
+#         version: '$(flutterVersion)'
+#     - script: |
+#         cd user_frontend
+#         flutter pub get
+#         flutter doctor
+#         # flutter test
+#       displayName: 'Run Flutter Tests'
 
-- stage: BuildMobile
-  dependsOn: Test
-  jobs:
-  - job: BuildMobileApp
-    steps:
-    - task: FlutterInstall@0
-      inputs:
-        version: '$(flutterVersion)'
+# - stage: BuildMobile
+#   dependsOn: Test
+#   jobs:
+#   - job: BuildMobileApp
+#     steps:
+#     - task: FlutterInstall@0
+#       inputs:
+#         version: '$(flutterVersion)'
     
-    - script: |
-        cd user_frontend
-        flutter pub get
-        flutter build apk --release
-      displayName: 'Build Android APK'
+#     - script: |
+#         cd user_frontend
+#         flutter pub get
+#         flutter build apk --release
+#       displayName: 'Build Android APK'
     
-    - script: |
-        cd user_frontend
-        flutter build appbundle --release
-      displayName: 'Build Android App Bundle'
+#     - script: |
+#         cd user_frontend
+#         flutter build appbundle --release
+#       displayName: 'Build Android App Bundle'
     
-    - script: |
-        cd user_frontend
-        mkdir -p build/ios/ipa
-        flutter build ios --release --no-codesign
-      displayName: 'Build iOS App'
-      condition: eq(variables['Agent.OS'], 'Darwin')
+#     - script: |
+#         cd user_frontend
+#         mkdir -p build/ios/ipa
+#         flutter build ios --release --no-codesign
+#       displayName: 'Build iOS App'
+#       condition: eq(variables['Agent.OS'], 'Darwin')
     
-    # Publish artifacts for download
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/flutter-apk/app-release.apk'
-        artifactName: 'android-apk'
-        publishLocation: 'Container'
-      displayName: 'Publish Android APK'
+#     # Publish artifacts for download
+#     - task: PublishBuildArtifacts@1
+#       inputs:
+#         pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/flutter-apk/app-release.apk'
+#         artifactName: 'android-apk'
+#         publishLocation: 'Container'
+#       displayName: 'Publish Android APK'
     
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/bundle/release/app-release.aab'
-        artifactName: 'android-bundle'
-        publishLocation: 'Container'
-      displayName: 'Publish Android App Bundle'
+#     - task: PublishBuildArtifacts@1
+#       inputs:
+#         pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/app/outputs/bundle/release/app-release.aab'
+#         artifactName: 'android-bundle'
+#         publishLocation: 'Container'
+#       displayName: 'Publish Android App Bundle'
     
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/ios'
-        artifactName: 'ios-build'
-        publishLocation: 'Container'
-      displayName: 'Publish iOS Build'
-      condition: eq(variables['Agent.OS'], 'Darwin')
+#     - task: PublishBuildArtifacts@1
+#       inputs:
+#         pathToPublish: '$(System.DefaultWorkingDirectory)/mobile/build/ios'
+#         artifactName: 'ios-build'
+#         publishLocation: 'Container'
+#       displayName: 'Publish iOS Build'
+#       condition: eq(variables['Agent.OS'], 'Darwin')
 
     # App Center deployment commented out
     # - task: AppCenterDistribute@3
