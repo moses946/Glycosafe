@@ -69,7 +69,8 @@ stages:
     - task: FlutterInstall@0
       inputs:
         channel: 'stable'
-        version: 'latest'
+        version: 'custom'
+        customVersion: '3.29.2'
     - script: |
         cd user_frontend
         flutter pub get
