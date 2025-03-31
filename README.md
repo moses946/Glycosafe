@@ -35,7 +35,7 @@ GlycoSafe is an AI-powered mobile application that estimates the glycemic load o
 
 ### DevOps & Deployment:
 - **GitHub Actions** - For CI/CD automation.
-- **Google Cloud/AWS/Azure** - For cloud hosting and scalable backend deployment.
+- **Microsoft Azure** - For cloud hosting and scalable backend deployment.
 - **GitHub Pages** - For project documentation and web-based details.
 
 ---

@@ -1,0 +1,39 @@
+# Flutter & Dart build artifacts
+user_frontend/.build/
+user_frontend/.dart_tool/
+user_frontend/.packages
+user_frontend/.pub/
+user_frontend/.flutter-plugins
+user_frontend/.flutter-plugins-dependencies
+user_frontend/.flutter-versions
+user_frontend/.idea/
+user_frontend/.vscode/
+
+# Android-specific
+user_frontend/android/.gradle/
+user_frontend/android/app/build/
+user_frontend/android/local.properties
+
+# iOS/macOS-specific
+user_frontend/ios/Pods/
+user_frontend/ios/.symlinks/
+user_frontend/ios/Flutter/Flutter.framework
+user_frontend/ios/Flutter/Flutter.podspec
+user_frontend/macos/Pods/
+user_frontend/macos/.symlinks/
+user_frontend/macos/Flutter/ephemeral/
+
+# Web-specific
+user_frontend/web/.dart_tool/
+user_frontend/web/build/
+
+# Linux-specific
+user_frontend/linux/flutter/ephemeral/
+user_frontend/linux/build/
+
+# Windows-specific
+user_frontend/windows/flutter/ephemeral/
+user_frontend/windows/build/
+
+# Flutter dependency lock file (optional)
+user_frontend/pubspec.lock
