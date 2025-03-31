@@ -1,1 +1,0 @@
- C:\\Users\\Moses\\Documents\\MyProjects\\Glycosafe\\user_frontend\\.dart_tool\\flutter_build\\5ef01695ed26811f2f0a6a010057abf9\\native_assets.yaml: 
