@@ -192,13 +192,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: _isLoading
-            ? SplashScreen()
-            : (_isAuthenticated
-                ? CameraPage(cameraController: cameraProvider.cameraController)
-                : Login()),
+        // home: _isLoading
+        //     ? SplashScreen()
+        //     : (_isAuthenticated
+        //         ? CameraPage(cameraController: cameraProvider.cameraController)
+        //         : Login()),
         // home: const HomePage2(),
-        // home: CameraPage(),
+        home: CameraPage(cameraController: cameraProvider.cameraController),
         // home: Final_SignUp(),
         // home: SettingsPage(),
         builder: EasyLoading.init(),
