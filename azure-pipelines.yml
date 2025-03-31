@@ -16,7 +16,7 @@ pool:
 
 variables:
   # Mobile App
-  flutterVersion: 'stable'
+  flutterVersion: '3.29.2'
   androidBuildType: 'apk'
   iosBuildType: 'ipa'
   # Backend
