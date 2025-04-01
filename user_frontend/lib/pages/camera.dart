@@ -195,12 +195,12 @@ class _CameraPageState extends State<CameraPage> {
           ScaffoldMessenger.of(context)
               .showSnackBar(ErrorSnackBar(content: "Internal Server Error"));
         }
-      } on http.ClientException catch (e) {
+      } on http.ClientException {
         EasyLoading.dismiss();
         EasyLoading.showError("Error");
         ScaffoldMessenger.of(context)
             .showSnackBar(ErrorSnackBar(content: "Network error"));
-      } on IOException catch (e) {
+      } on IOException {
         EasyLoading.dismiss();
         EasyLoading.showError("Error");
         ScaffoldMessenger.of(context)
